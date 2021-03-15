@@ -1,0 +1,17 @@
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    height: 70px;
+    list-style: none;
+}
+
+.header-background {
+    background-color: #000;
+}
+
+.logo {
+    width: 150px;
+    margin-right: 150px;
+}
