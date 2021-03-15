@@ -2,8 +2,11 @@
     font-size: 15px;
     line-height: 21px;
     text-decoration: none;
-    padding: 20px 30px;
     font-weight: 400;
+}
+
+header .a {
+    padding: 20px 30px;
 }
 
 .a--white {
@@ -13,6 +16,8 @@
 
 .a--blue {
     color: rgb(15, 130, 255);
+    font-size: 20px;
+    font-weight: 600;
 }
 
 .a--blue:hover {
