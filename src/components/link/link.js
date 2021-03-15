@@ -6,7 +6,7 @@ const LinkComponent = ({ title, isBasic, href }) => {
 
     return (
         !isBasic ? <Link to={href} className={[styles.a, styles['a--white']].join(" ")}>{title}</Link>
-            : <Link className={[styles.a, styles['a--blue']].join(" ")}>{title}</Link>
+        : <Link to={href} className={[styles.a, styles['a--blue']].join(" ")}>{title}</Link>
     )
 }
 

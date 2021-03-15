@@ -1,0 +1,21 @@
+.content-wrapper {
+    max-width: 55%;
+    margin: 0 auto;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    margin-top: 50px;
+}
+
+.main-img {
+    width: 70%;
+    height: 70%;
+}
+
+.offer-pricing {
+    text-align: center;
+    margin: 20px 0;
+    color: rgb(134, 134, 139);
+}

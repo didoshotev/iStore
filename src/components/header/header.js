@@ -6,7 +6,6 @@ import HeaderLi from '../header-li/header-li'
 
 const Header = () => {
     const links = getNavigation()
-    console.log(links);
 
     return (
         <header className={styles['header-background']}>
