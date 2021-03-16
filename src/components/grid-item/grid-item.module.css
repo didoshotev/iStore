@@ -1,0 +1,25 @@
+.small-item {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.small-img {
+    width: 220px;
+    margin-left: 60px;
+}
+
+.big-item {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.big-img {
+    max-width: 450px;
+}
