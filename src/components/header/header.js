@@ -3,6 +3,7 @@ import styles from './header.module.css'
 import LinkComponent from '../link/link'
 import getNavigation from '../../utils/navigation'
 import HeaderLi from '../header-li/header-li'
+import { Link } from 'react-router-dom'
 
 const Header = () => {
     const links = getNavigation()
@@ -10,9 +11,9 @@ const Header = () => {
     return (
         <header className={styles['header-background']}>
             <ul className={styles.header}>
-                <a href="/">
+                <Link to="/">
                     <img src="https://istyle.bg/media/logo/stores/11/iSTYLE-logo-white-red.svg" alt="" className={styles.logo} />
-                </a>
+                </Link>
                 {
                     links.map((item, index) => <HeaderLi
                         key={index}

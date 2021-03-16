@@ -1,0 +1,25 @@
+.main {
+    padding: .563rem 1rem;
+    font-size: 1rem;
+    border-radius: 4px;
+    transition: .2s;
+    border: 1px solid transparent;
+    color: #fff;
+    font-weight: 500;
+    line-height: 1.25;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.main-primary:hover {
+    transform: translateY(-2px);
+    color: #fff;
+    text-decoration: none;
+    background: #52a5ff;
+    box-shadow: 0 4px 16px -8px rgb(0 122 255 / 24%);
+}
+
+.main-primary {
+    background: #007aff;
+    box-shadow: 0 2px 4px -2px rgb(0 122 255 / 80%);
+}
