@@ -5,7 +5,7 @@ const SpecialOffer = () => {
 
     return (
         <span className={styles['special-offer']}>
-            Special Offer
+            Exclusive Offer
         </span>
     )
 }
