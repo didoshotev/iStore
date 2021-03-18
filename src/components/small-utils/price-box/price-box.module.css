@@ -1,0 +1,13 @@
+.price {
+    font-size: 19px;
+    font-weight: 600;
+    line-height: 24px;
+}
+
+.available {
+    color:rgb(71, 192, 106);
+}
+
+.not-available {
+   color: rgb(226, 25, 55);
+}
