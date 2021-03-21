@@ -54,14 +54,6 @@ class Grid extends Component {
         return (
             <article className={styles.grid}>
                 {this.renderProducts()}
-                {/* <GridItem />
-                <GridItem />
-                <GridItem />
-                <GridItem />
-                <GridItem />
-                <GridItem />
-                <GridItem />
-                <GridItem /> */}
 
             </article>
         )
