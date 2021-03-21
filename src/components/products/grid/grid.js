@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import GridItem from '../grid-item/grid-item'
 import styles from './grid.module.css'
 
+
 class Grid extends Component {
 
     constructor(props) {
@@ -21,7 +22,6 @@ class Grid extends Component {
             promise = await fetch('http://localhost:5000/api/products')
         }
         const products = await promise.json()
-
         this.setState({
             products
         })
@@ -32,7 +32,7 @@ class Grid extends Component {
         return (
             products.map(item => {
                 return (
-                    <GridItem 
+                    <GridItem
                         key={item._id}
                         title={item.title}
                         info={item.description}
