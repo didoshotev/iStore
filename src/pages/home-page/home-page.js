@@ -6,13 +6,12 @@ import SecondHomeSection from '../../components/second-home-section/second-home-
 const HomePage = () => {
 
     return (
-       <PageLayout>
-           <FirstHomeSection />
-           <SecondHomeSection />
-       </PageLayout>
-    
-    )
-    }
+        <PageLayout>
+            <FirstHomeSection />
+            <SecondHomeSection />
+        </PageLayout>
 
+    )
+}
 
 export default HomePage
