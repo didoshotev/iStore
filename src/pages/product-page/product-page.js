@@ -13,14 +13,7 @@ class ProductPage extends Component {
 
 
     render() {
-        {
-            
-            
-            // let pageType = this.props.location.pathname;
-            // console.log(pageType);
-        }
         return (
-
             <PageLayout>
                 <AuthTitle content={'Apple All Around'} />
                 <Grid pageType={this.state.path} />

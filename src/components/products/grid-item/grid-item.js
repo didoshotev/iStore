@@ -1,9 +1,10 @@
 import React from 'react'
 import styles from './grid-item.module.css'
-import mac from '../../../images/mcb-pro.png'
 import Button from '../../button/button'
-import CartIcon from '../../cart-icon/cart-icon'
+import FontAwIcon from '../../font-awesome-icon/fontAwesomeIcon'
 import PriceBox from '../../small-utils/price-box/price-box'
+import {faCartPlus} from '@fortawesome/free-solid-svg-icons'
+
 
 
 const GridItem = ({ isNew, title, info, img, price, isCart }) => {
@@ -26,7 +27,7 @@ const GridItem = ({ isNew, title, info, img, price, isCart }) => {
                 !isCart ?
                     <div className={styles['btn-cart-wrapper']}>
                         <Button content={'More info'} />
-                        <Button content={<CartIcon />} />
+                        <Button content={<FontAwIcon icon={faCartPlus} size={'lg'} color={'#fff'}/>} />
                     </div>
                     :
                     <div className={styles['btn-wrapper']}>
