@@ -24,7 +24,7 @@ const GridItem = ({ isNew, title, info, img, price, isCart }) => {
             </div>
 
             {
-                !isCart ?
+                isCart ?
                     <div className={styles['btn-cart-wrapper']}>
                         <Button content={'More info'} />
                         <Button content={<FontAwIcon icon={faCartPlus} size={'lg'} color={'#fff'}/>} />

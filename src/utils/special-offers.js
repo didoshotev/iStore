@@ -12,19 +12,23 @@ const getSpecialOffers = () => {
             info: 'Buy now for $39.32/mo or $1200 cash in',
             type: 'big',
             imgUrl: `${ipad}`,
+            category: 'ipad'
             // linkUrl: `/ipad/air-${id}`
         },
         {
             title: 'MacBook Pro 13',
             info: 'Buy now for $79.32/mo or $2000 before trade in',
             type: 'small',
-            imgUrl: `${mcbPro}`
+            imgUrl: `${mcbPro}`,
+            category: 'mac'
+
         },
         {
             title: 'MacBook Air',
             info: 'Buy now for $69.32/mo or $1500 before trade in',
             type: 'small',
-            imgUrl: `${mcb}`
+            imgUrl: `${mcb}`,
+            category: 'mac'
         },
     ]
 
