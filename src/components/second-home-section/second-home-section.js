@@ -5,7 +5,6 @@ import getSpecialOffers from '../../utils/special-offers'
 
 const SecondHomeSection = () => {
     const offers = getSpecialOffers()
-
     return (
         <article className={styles.wrapper}>
             {
@@ -13,7 +12,7 @@ const SecondHomeSection = () => {
                     return (
                         <div className={styles[`gr-${index + 1}`]} key={index + 1}>
                             <GridItem
-                                type={item.type} title={item.title} info={item.info} imgUrl={item.imgUrl} key={index}
+                                type={item.type} title={item.title} info={item.info} imgUrl={item.imgUrl} key={index} category={item.category}
                             />
                         </div>
                     )

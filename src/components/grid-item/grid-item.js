@@ -4,26 +4,24 @@ import SpecialOffer from '../special-offer/special-offer'
 import styles from './grid-item.module.css'
 import * as images from '../../images/mcb.png'
 
-const GridItem = ({ type, title, info, imgUrl }) => {
+const GridItem = ({ type, title, info, imgUrl, category }) => {
     if (type === 'small') {
         return (
             <section className={styles['small-item']}>
-                <GridItemDesc productName={title} info={info} />
+                <GridItemDesc productName={title} info={info} category={category}/>
                 <img src={imgUrl} alt="" className={styles['small-img']} />
             </section>
         )
     } else if (type === 'big') {
         return (
             <section className={styles['big-item']}>
-                <GridItemDesc productName={title} info={info} />
+                <GridItemDesc productName={title} info={info} category={category}/>
                 <img src={imgUrl} alt="" className={styles['big-img']} />
             </section>
         )
     } else {
         <div>Loading...</div>
     }
-
-    
 }
 
 export default GridItem

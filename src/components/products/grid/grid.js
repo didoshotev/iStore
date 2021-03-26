@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import UserContext from '../../../Context'
 import GridItem from '../grid-item/grid-item'
 import styles from './grid.module.css'
 
@@ -14,6 +15,8 @@ class Grid extends Component {
         }
     }
 
+    static contextType = UserContext
+
     getProducts = async () => {
         let promise;
         if (this.state.path !== 'products') {
@@ -27,7 +30,7 @@ class Grid extends Component {
         })
     }
 
-    renderProducts() {
+    renderProducts(loggedIn) {
         const products = this.state.products
         return (
             products.map(item => {
@@ -38,7 +41,7 @@ class Grid extends Component {
                         info={item.description}
                         img={item.imageUrl}
                         price={item.price}
-                        isCart={false}
+                        isCart={loggedIn}
                         isNew={true}
                     />
                 )
@@ -51,9 +54,13 @@ class Grid extends Component {
     }
 
     render() {
+        const {
+            loggedIn
+        } = this.context
+        
         return (
             <article className={styles.grid}>
-                {this.renderProducts()}
+                {this.renderProducts(loggedIn)}
 
             </article>
         )

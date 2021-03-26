@@ -27,11 +27,11 @@ class Header extends Component {
                         <img src="https://istyle.bg/media/logo/stores/11/iSTYLE-logo-white-red.svg" alt="" className={styles.logo} />
                     </Link>
                     {
-                        links.map((item, index) => <HeaderLi
+                        links.map((item, index) => 
+                            <HeaderLi
                             key={index}
                             href={item.link}
                             title={item.title}
-
                         />)
                     }
                 </ul>
