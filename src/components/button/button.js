@@ -4,7 +4,7 @@ import styles from './button.module.css'
 const Button = ({content}) => {
 
     return (
-        <button className={[styles.main, styles['main-primary']].join(" ")}>
+        <button type={'submit'} className={[styles.main, styles['main-primary']].join(" ")}>
             {content}
         </button>
     )

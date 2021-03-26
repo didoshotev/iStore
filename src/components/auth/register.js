@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+import { withRouter } from 'react-router'
+import UserContext from '../../Context'
+import authenticate from '../../utils/authenticate'
 import Button from '../button/button'
 import FormGroup from '../form-group/form-group'
 import styles from './auth.module.css'
@@ -15,6 +18,8 @@ class Register extends Component {
         }
     }
 
+    static contextType = UserContext
+
     onChange = (e, type) => {
         const newState = {}
         newState[type] = e.target.value
@@ -23,13 +28,30 @@ class Register extends Component {
 
     handleForm = async (e) => {
         e.preventDefault()
-        console.log('form is submitted')
         const {
             username,
             password,
             email
         } = this.state
+
         
+
+        await authenticate(
+            'http://localhost:5000/api/user/register',
+            {
+                username,
+                email,
+                password
+            },
+            (user) => {
+                console.log('Register successfull')
+                this.context.logIn(user)
+                this.props.history.push('/')
+            },
+            (err) => {
+                console.log('ERROR in register', err);
+            }
+        )
     }
 
     render() {
@@ -59,4 +81,4 @@ class Register extends Component {
     }
 }
 
-export default Register
+export default withRouter(Register)
