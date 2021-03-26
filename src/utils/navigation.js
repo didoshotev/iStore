@@ -1,6 +1,6 @@
-const getNavigation = (userid) => {
+const getNavigation = (loggedIn, user) => {
 
-    const links = [
+    const guestLinks = [
         {
             title: 'All Products',
             link: '/products'
@@ -25,13 +25,36 @@ const getNavigation = (userid) => {
             title: 'Register',
             link: '/register'
         },
+    ]
+
+    const authLinks = [
+        {
+            title: 'All Products',
+            link: '/products'
+        },
+        {
+            title: 'Mac',
+            link: '/mac'
+        },
+        {
+            title: 'iPad',
+            link: '/ipad'
+        },
+        {
+            title: 'iPhone',
+            link: '/iphone'
+        },
+        {
+            title: 'Logout',
+            link: '/logout'
+        },
         {
             title: 'Cart',
-            link: `/cart/${userid}`
+            link: `/cart/${user && user.id}`
         }
     ]
 
-    return links
+    return loggedIn ? authLinks : guestLinks
 }
 
 export default getNavigation
