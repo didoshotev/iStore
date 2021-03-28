@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
-import AuthTitle from '../auth-title/auth-title'
-import styles from './item.module.css'
+import UserContext from '../../Context'
+import Button from '../button/button'
+import PriceBox from '../small-utils/price-box/price-box'
+import styles from './productInfo.module.css'
 
 class ProductInfo extends Component {
     constructor(props) {
         super(props)
-        
+
         this.state = {
             title: null,
             price: null,
@@ -16,14 +18,15 @@ class ProductInfo extends Component {
         }
     }
 
+    static contextType = UserContext
+
     componentDidMount() {
         this.getItem(this.props.id)
     }
 
-    getItem = async(id) => {
+    getItem = async (id) => {
         const promise = await fetch(`http://localhost:5000/api/products/${this.props.category}/${id}`)
         const product = await promise.json()
-        console.log(product);
         this.setState({
             title: product.title,
             description: product.description,
@@ -36,19 +39,51 @@ class ProductInfo extends Component {
 
     render() {
 
+        const { user, loggedIn } = this.context
+        console.log(this.context);
         const {
             title,
             price,
-            info,
-            isAvailable,
+            description,
+            isActive,
             deviceType,
             imageUrl,
         } = this.state
 
         return (
-            <div className={styles.container}>
-                <h3>{title}</h3>
-            </div>
+            <section className={styles.container}>
+                <div className={styles['img-wrapper']}>
+                    <img src={imageUrl} alt="" />
+                </div>
+                <div className={styles['info-wrapper']}>
+                    <h3>{title}</h3>
+                    <p className={styles.category}>Category: {deviceType}</p>
+                    <div className={styles['info-desc']}>
+                        <h5>More about the product</h5>
+                        <p>{description}</p>
+                    </div>
+                    <div className={styles['btn-price-wrapper']}>
+                        {/* <span className={styles.price}>${price}.00</span> */}
+                        <div>
+                            <PriceBox price={price} isAvailable={isActive} />
+                        </div>
+                        <div>
+                            <Button content={'Buy Now'} />
+                        </div>
+                    </div>
+                    {
+                        user.role === 'admin'
+                        ?
+                        <div className={styles.admin}>
+                            <Button content={'Edit'} />
+                            <Button content={'Delete'} />
+
+                        </div>
+                        :
+                        <span></span>
+                }
+                </div>
+            </section>
         )
     }
 

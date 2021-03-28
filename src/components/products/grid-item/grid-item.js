@@ -35,7 +35,7 @@ class GridItem extends Component {
                 {
                     isCart ?
                         <div className={styles['btn-cart-wrapper']}>
-                            <Button content={'More info'} />
+                            <Button content={'More info'} onClick={(e) => this.moreInfoHandler(e, id, category)}/>
                             <Button content={<FontAwIcon icon={faCartPlus} size={'lg'} color={'#fff'} />} />
                         </div>
                         :
