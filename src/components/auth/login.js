@@ -37,6 +37,7 @@ class Login extends Component {
             },
             (user) => {
                 console.log('Login successfull')
+                console.log(user);
                 this.context.logIn(user)
                 this.props.history.push('/')
             },
