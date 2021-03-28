@@ -4,6 +4,8 @@ const { auth } = require('../utils');
 
 router.get('/', controllers.products.get);
 
+router.get('/:category/:id', controllers.products.getById);
+
 router.get('/:iphone', controllers.products.getIphones);
 
 router.get('/:ipad', controllers.products.getIpads);

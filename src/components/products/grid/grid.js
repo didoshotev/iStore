@@ -19,6 +19,7 @@ class Grid extends Component {
 
     getProducts = async () => {
         let promise;
+            // decide whether to load products or products/mac(ipad,phone)
         if (this.state.path !== 'products') {
             promise = await fetch(`http://localhost:5000/api/products/${this.state.path}`)
         } else {
@@ -43,6 +44,8 @@ class Grid extends Component {
                         price={item.price}
                         isCart={loggedIn}
                         isNew={true}
+                        id={item._id}
+                        category={item.deviceType}
                     />
                 )
             })

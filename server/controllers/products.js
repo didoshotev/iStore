@@ -8,6 +8,14 @@ module.exports = {
             .then((products) => res.send(products))
             .catch(next);
     },
+    getById: (req, res, next) => {
+        const id = req.params.id
+        models.Product.findById(id)
+        .then((product) => {
+            return res.send(product)
+        })
+        .catch(next);
+    },
 
     getIphones: (req, res, next) => {
         const iphone = req.params.iphone
