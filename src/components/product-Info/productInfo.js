@@ -38,9 +38,7 @@ class ProductInfo extends Component {
     }
 
     render() {
-
-        const { user, loggedIn } = this.context
-        console.log(this.context);
+        const { user, loggedIn, role } = this.context
         const {
             title,
             price,
@@ -72,15 +70,12 @@ class ProductInfo extends Component {
                         </div>
                     </div>
                     {
-                        user.role === 'admin'
-                        ?
+                        role === 'admin'
+                        &&
                         <div className={styles.admin}>
                             <Button content={'Edit'} />
                             <Button content={'Delete'} />
-
                         </div>
-                        :
-                        <span></span>
                 }
                 </div>
             </section>

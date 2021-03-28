@@ -13,14 +13,16 @@ class App extends Component {
 
         this.state = {
             loggedIn: null,
-            user: null
+            user: null,
+            role: 'guest'
         }
     }
 
     logIn = (user) => {
         this.setState({
             loggedIn: true,
-            user
+            user,
+            role: user.role
         })
     }
 
@@ -28,7 +30,8 @@ class App extends Component {
         document.cookie = 'x-auth-token= ; expires= Thu, 01 Jan 1970 00:00:00 GMT'
         this.setState({
             loggedIn: false,
-            user: null
+            user: null,
+            role: 'guest'
         })
     }
 
@@ -65,8 +68,10 @@ class App extends Component {
     render() {
         const {
             loggedIn,
-            user
+            user,
+            role
         } = this.state
+        
         if(loggedIn === null) {
             return (
                 <div>Loading...</div>
@@ -76,8 +81,9 @@ class App extends Component {
             <UserContext.Provider value={{
                 loggedIn,
                 user,
+                role,
                 logIn: this.logIn,
-                logOut: this.logOut
+                logOut: this.logOut,
             }}>
                
                 {this.props.children}
