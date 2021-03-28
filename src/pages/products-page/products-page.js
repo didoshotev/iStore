@@ -3,7 +3,7 @@ import AuthTitle from '../../components/auth-title/auth-title'
 import PageLayout from '../../components/page-layout/page-layout'
 import Grid from '../../components/products/grid/grid'
 
-class ProductPage extends Component {
+class ProductsPage extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -23,4 +23,4 @@ class ProductPage extends Component {
 
 }
 
-export default ProductPage
+export default ProductsPage

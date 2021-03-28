@@ -2,11 +2,12 @@ import { BrowserRouter, Switch, Route, withRouter, Link, Redirect } from "react-
 import HomePage from "./pages/home-page/home-page"
 import LoginPage from "./pages/login-page/login-page"
 import RegisterPage from "./pages/register-page/register-page"
-import ProductPage from "./pages/product-page/product-page"
+import ProductsPage from "./pages/products-page/products-page"
 import ProductNavWrapper from "./components/product-nav-wrapper/product-nav-wrapper"
 import { Component } from "react"
 import UserContext from "./Context"
 import Logout from "./components/auth/logout"
+import productInfoPage from "./pages/product-info-page/product-info-page"
 
 class Navigation extends Component {
 
@@ -27,10 +28,12 @@ class Navigation extends Component {
           <Route path="/register" component={()=>!loggedIn ? <RegisterPage/> : <Redirect to='/' />} />
           <Route path="/logout" component={()=> loggedIn ? <Logout/> : <Redirect to='/login' />} />
           <ProductNavWrapper>
-            <Route path='/products' component={ProductPage} />
-            <Route path='/mac' component={ProductPage} />
-            <Route path='/iphone' component={ProductPage} />
-            <Route path='/ipad' component={ProductPage} />
+            <Route path='/products' exact component={ProductsPage} />
+            <Route path='/mac' component={ProductsPage} />
+            <Route path='/iphone' component={ProductsPage} />
+            <Route path='/ipad' component={ProductsPage} />
+            <Route path='/products/:category/:id' component={productInfoPage} />
+
           </ProductNavWrapper>
         </Switch>
       </BrowserRouter>
