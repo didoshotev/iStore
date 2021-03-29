@@ -8,6 +8,7 @@ import { Component } from "react"
 import UserContext from "./Context"
 import Logout from "./components/auth/logout"
 import productInfoPage from "./pages/product-info-page/product-info-page"
+import Create from "./components/admin/create/create"
 
 class Navigation extends Component {
 
@@ -18,8 +19,8 @@ class Navigation extends Component {
   static contextType = UserContext
 
   render() {
-    const { loggedIn } = this.context
-
+    const { loggedIn, role } = this.context
+    console.log(this.context);
     return (
       <BrowserRouter>
         <Switch>
@@ -27,13 +28,14 @@ class Navigation extends Component {
           <Route path="/login" component={()=>!loggedIn ? <LoginPage/> : <Redirect to='/' />} />
           <Route path="/register" component={()=>!loggedIn ? <RegisterPage/> : <Redirect to='/' />} />
           <Route path="/logout" component={()=> loggedIn ? <Logout/> : <Redirect to='/login' />} />
+          <Route path="/create" component={ Create } />
+          
           <ProductNavWrapper>
             <Route path='/products' exact component={ProductsPage} />
             <Route path='/mac' component={ProductsPage} />
             <Route path='/iphone' component={ProductsPage} />
             <Route path='/ipad' component={ProductsPage} />
             <Route path='/products/:category/:id' component={productInfoPage} />
-
           </ProductNavWrapper>
         </Switch>
       </BrowserRouter>
