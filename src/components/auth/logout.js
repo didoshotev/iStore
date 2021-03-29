@@ -10,10 +10,6 @@ class Logout extends Component {
 
     static contextType = UserContext
 
-    logOut() {
-       
-    }
-
     componentDidMount() {
         this.context.logOut()
         this.props.history.push('/login')
