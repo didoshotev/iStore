@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { withRouter } from 'react-router'
 import UserContext from '../../Context'
 import Button from '../button/button'
 import PriceBox from '../small-utils/price-box/price-box'
@@ -27,13 +28,23 @@ class ProductInfo extends Component {
     getItem = async (id) => {
         const promise = await fetch(`http://localhost:5000/api/products/${this.props.category}/${id}`)
         const product = await promise.json()
+        console.log(product);
         this.setState({
             title: product.title,
             description: product.description,
             deviceType: product.deviceType,
             isActive: product.isActive,
             price: product.price,
-            imageUrl: product.imageUrl
+            imageUrl: product.imageUrl,
+            id: product._id
+        })
+    }
+
+    handleEditRedirect = (e, state) => {
+        e.preventDefault()
+        this.props.history.push({
+            pathname: `/edit/${state.id}`,
+            state: { data: state }
         })
     }
 
@@ -46,6 +57,7 @@ class ProductInfo extends Component {
             isActive,
             deviceType,
             imageUrl,
+            id
         } = this.state
 
         return (
@@ -73,7 +85,7 @@ class ProductInfo extends Component {
                         role === 'admin'
                         &&
                         <div className={styles.admin}>
-                            <Button content={'Edit'} />
+                            <Button content={'Edit'} onClick={(e) => this.handleEditRedirect(e, this.state)}/>
                             <Button content={'Delete'} />
                         </div>
                 }
@@ -84,4 +96,4 @@ class ProductInfo extends Component {
 
 }
 
-export default ProductInfo
+export default withRouter(ProductInfo)

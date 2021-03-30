@@ -37,11 +37,6 @@ class Create extends Component {
 
     handleSubmit = async (event) => {
         event.preventDefault()
-        const {
-            username,
-            password
-        } = this.state
-        // let title, description, deviceType, imageUrl, price, isActive
        let [title, description, deviceType, imageUrl, price, isActive] = [...this.state.values]
        
         await createProduct(
