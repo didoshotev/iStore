@@ -15,9 +15,7 @@ class ProductsPage extends Component {
     static contextType = UserContext
 
     render() {
-        console.log(this.context);
         const { role } = this.context
-        console.log(role);
         return (
             <PageLayout>
                 {

@@ -9,6 +9,7 @@ import UserContext from "./Context"
 import Logout from "./components/auth/logout"
 import productInfoPage from "./pages/product-info-page/product-info-page"
 import Create from "./components/admin/create/create"
+import Edit from "./components/admin/edit/edit"
 
 class Navigation extends Component {
 
@@ -20,7 +21,6 @@ class Navigation extends Component {
 
   render() {
     const { loggedIn, role } = this.context
-    console.log(this.context);
     return (
       <BrowserRouter>
         <Switch>
@@ -29,7 +29,8 @@ class Navigation extends Component {
           <Route path="/register" component={()=>!loggedIn ? <RegisterPage/> : <Redirect to='/' />} />
           <Route path="/logout" component={()=> loggedIn ? <Logout/> : <Redirect to='/login' />} />
           <Route path="/create" component={ Create } />
-          
+          <Route path="/edit/:id" component={ Edit } />
+
           <ProductNavWrapper>
             <Route path='/products' exact component={ProductsPage} />
             <Route path='/mac' component={ProductsPage} />
