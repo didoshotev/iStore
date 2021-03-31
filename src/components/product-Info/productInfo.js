@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router'
 import UserContext from '../../Context'
+import apiCall from '../../utils/apiCall'
 import Button from '../button/button'
 import PriceBox from '../small-utils/price-box/price-box'
 import styles from './productInfo.module.css'
@@ -28,7 +29,6 @@ class ProductInfo extends Component {
     getItem = async (id) => {
         const promise = await fetch(`http://localhost:5000/api/products/${this.props.category}/${id}`)
         const product = await promise.json()
-        console.log(product);
         this.setState({
             title: product.title,
             description: product.description,
@@ -48,8 +48,24 @@ class ProductInfo extends Component {
         })
     }
 
+    handleDelete = async (e, id) => {
+        e.preventDefault()
+        await apiCall(
+            `http://localhost:5000/api/products/${id}`,
+            { },
+            'DELETE',
+            (product) => {
+                console.log('Product successfully deleted!')
+                this.props.history.push('/')
+            },
+            (err) => {
+                console.log('ERROR in deleting product', err);
+            }
+        )
+    }
+
     render() {
-        const { user, loggedIn, role } = this.context
+        const { role } = this.context
         const {
             title,
             price,
@@ -57,7 +73,6 @@ class ProductInfo extends Component {
             isActive,
             deviceType,
             imageUrl,
-            id
         } = this.state
 
         return (
@@ -86,7 +101,7 @@ class ProductInfo extends Component {
                         &&
                         <div className={styles.admin}>
                             <Button content={'Edit'} onClick={(e) => this.handleEditRedirect(e, this.state)}/>
-                            <Button content={'Delete'} />
+                            <Button content={'Delete'} onClick={(e) => this.handleDelete(e, this.state.id)}/>
                         </div>
                 }
                 </div>
