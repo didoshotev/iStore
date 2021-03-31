@@ -4,7 +4,7 @@ import FormLayout from '../../form-layout/form-layout'
 import getInputs from '../../../utils/inputs'
 import PageLayout from '../../page-layout/page-layout'
 import AuthTitle from '../../auth-title/auth-title'
-import createProduct from '../../../utils/createProduct'
+import apiCall from '../../../utils/apiCall'
 
 class Create extends Component {
     constructor(props) {
@@ -39,7 +39,7 @@ class Create extends Component {
         event.preventDefault()
        let [title, description, deviceType, imageUrl, price, isActive] = [...this.state.values]
        
-        await createProduct(
+        await apiCall(
             'http://localhost:5000/api/products',
             {
                 title, description, deviceType, imageUrl, price, isActive

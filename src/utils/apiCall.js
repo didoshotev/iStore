@@ -1,6 +1,6 @@
 import getCookie from './cookie'
 
-const createProduct = async (url, body, method, onSuccess, onFailure) => {
+const apiCall = async (url, body, method, onSuccess, onFailure) => {
 
     try {
         const promise = await fetch(url, {
@@ -27,4 +27,4 @@ const createProduct = async (url, body, method, onSuccess, onFailure) => {
     }
 }
 
-export default createProduct
+export default apiCall
