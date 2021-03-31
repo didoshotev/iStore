@@ -2,7 +2,6 @@ const models = require('../models');
 
 module.exports = {
     get: (req, res, next) => {
-        // console.log(req.query);
         // const length = req.query.length ? parseInt(req.query.length) : 20
         models.Product.find()
             .then((products) => res.send(products))
@@ -52,7 +51,6 @@ module.exports = {
 
     put: (req, res, next) => {
         const id = req.params.id;
-        console.log(id);
         const { title, description, imageUrl, price, deviceType, isActive } = req.body;
         models.Product.updateOne({ _id: id }, { title, description, imageUrl, price, deviceType, isActive })
             .then((updatedProduct) => res.send(updatedProduct))
