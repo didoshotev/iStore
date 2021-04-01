@@ -52,7 +52,7 @@ class ProductInfo extends Component {
         e.preventDefault()
         await apiCall(
             `http://localhost:5000/api/products/${id}`,
-            { },
+            {},
             'DELETE',
             (product) => {
                 console.log('Product successfully deleted!')
@@ -62,6 +62,13 @@ class ProductInfo extends Component {
                 console.log('ERROR in deleting product', err);
             }
         )
+    }
+
+    handleBuy = (e, state) => {
+        e.preventDefault()
+        const { title, deviceType, id, imageUrl, price, description } = this.state
+        this.context.addToCart({ title, deviceType, id, imageUrl, price, description })
+        this.props.history.push('/')
     }
 
     render() {
@@ -93,17 +100,17 @@ class ProductInfo extends Component {
                             <PriceBox price={price} isAvailable={isActive} />
                         </div>
                         <div>
-                            <Button content={'Buy Now'} />
+                            <Button content={'Buy Now'} onClick={(e) => this.handleBuy(e, this.state)} />
                         </div>
                     </div>
                     {
                         role === 'admin'
                         &&
                         <div className={styles.admin}>
-                            <Button content={'Edit'} onClick={(e) => this.handleEditRedirect(e, this.state)}/>
-                            <Button content={'Delete'} onClick={(e) => this.handleDelete(e, this.state.id)}/>
+                            <Button content={'Edit'} onClick={(e) => this.handleEditRedirect(e, this.state)} />
+                            <Button content={'Delete'} onClick={(e) => this.handleDelete(e, this.state.id)} />
                         </div>
-                }
+                    }
                 </div>
             </section>
         )
