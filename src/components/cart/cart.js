@@ -1,55 +1,72 @@
-import React, { useContext } from 'react'
-import { useState } from 'react'
+import React, { Component } from 'react'
 import UserContext from '../../Context'
 import AuthTitle from '../auth-title/auth-title'
 import CartSummary from './cart-summary/cart-summary'
 import styles from './cart.module.css'
 import ItemRow from './item-row/item-row'
 
-const Cart = () => {
-    const userContext = useContext(UserContext)
-    const [subtotal, setSubtotal] = useState(0)
+class Cart extends Component {
+    constructor(props) {
+        super(props)
 
-    const boughtProducts = userContext.cart
-    // console.log(userContext);
-    const data = [
-        {
-            description: "Only for 92.12/mo and $2000.00 before trade-in",
-            deviceType: "mac",
-            id: "6053da56a627753d88c97e99",
-            imageUrl: "https://pngimg.com/uploads/macbook/macbook_PNG17.png",
-            price: 1600,
-            title: "MacBook 13"
-        },
-        {
-            description: "Only for 39.12/mo",
-            deviceType: "ipad",
-            id: "605365a7e4dd972360438f3b",
-            imageUrl: "https://www.novmak.com/cms-images/apple-ipad.jpg",
-            price: 600,
-            title: "iPad 10"
+        this.state = {
+            subtotal: 0,
+            cart: [],
         }
-    ]
+    }
 
-    const renderRow = data.map((item, index) => {
-        return <ItemRow key={index} product={item} />
-    })
+    static contextType = UserContext
+    renderRow() {
+        const items = this.state.cart
+        return (
+            items.map((item, index) => {
+                return <ItemRow key={index} product={item} onClick={(e) => this.onRemoveProduct(e, item)} />
+            })
+        )
+    }
 
-    return (
-        <>
-            <AuthTitle content={'Cart'} />
-            <article className={styles['main-content']}>
-                <ul>
-                    { renderRow }
-                </ul>
-                <section>
-                    <CartSummary />
-                </section>
-            </article>
+    onRemoveProduct(e, item) {
+        e.preventDefault()
+        this.context.removeFromCart(item.id)
+    }
 
+    componentDidMount() {
+        const sum = this.updateSum()
+        this.setState({
+            subtotal: sum
+        })
+    }
 
-        </>
-    )
+    updateSum() {
+        return this.context.cart.reduce((acc, curr) => {
+            acc += curr.price
+            return acc
+        }, 0)
+    }
+
+    render() {
+        const cart = this.context.cart
+        this.state.cart = cart
+        return (
+            <>
+                <AuthTitle content={'Cart'} />
+                {
+                    cart.length > 0
+                        ?
+                        <article className={styles['main-content']}>
+                            <ul>
+                                {this.renderRow()}
+                            </ul>
+                            <section>
+                                <CartSummary subtotal={this.state.subtotal} />
+                            </section>
+                        </article>
+                        :
+                        <div>There are no products in your cart</div>
+                }
+            </>
+        )
+    }
 }
 
 export default Cart
