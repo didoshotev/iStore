@@ -50,7 +50,7 @@ const getNavigation = (loggedIn, user) => {
         },
         {
             title: 'Cart',
-            link: `/cart/${user && user.id}`
+            link: `/cart`
         }
     ]
 

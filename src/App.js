@@ -14,8 +14,16 @@ class App extends Component {
         this.state = {
             loggedIn: null,
             user: null,
-            role: 'guest'
+            role: 'guest',
+            cart: []
         }
+    }
+
+    addToCart = (product) => {
+        const newCart = [...this.state.cart, product]
+        this.setState({
+            cart: newCart
+        })
     }
 
     logIn = (user) => {
@@ -31,7 +39,8 @@ class App extends Component {
         this.setState({
             loggedIn: false,
             user: null,
-            role: 'guest'
+            role: 'guest',
+            cart: []
         })
     }
 
@@ -69,7 +78,8 @@ class App extends Component {
         const {
             loggedIn,
             user,
-            role
+            role,
+            cart
         } = this.state
         
         if(loggedIn === null) {
@@ -84,6 +94,8 @@ class App extends Component {
                 role,
                 logIn: this.logIn,
                 logOut: this.logOut,
+                cart,
+                addToCart: this.addToCart
             }}>
                
                 {this.props.children}

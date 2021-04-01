@@ -5,7 +5,9 @@ const UserContext = React.createContext({
     user: null,
     role: 'guest',
     logIn: () => {},
-    logOut: () => {}
+    logOut: () => {},
+    cart: [],
+    addToCart: () => {}
 })
 
 export default UserContext

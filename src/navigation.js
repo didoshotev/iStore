@@ -10,6 +10,7 @@ import Logout from "./components/auth/logout"
 import productInfoPage from "./pages/product-info-page/product-info-page"
 import Create from "./components/admin/create/create"
 import Edit from "./components/admin/edit/edit"
+import CartPage from "./pages/cart-page/cart-page"
 
 class Navigation extends Component {
 
@@ -30,6 +31,7 @@ class Navigation extends Component {
           <Route path="/logout" component={()=> loggedIn ? <Logout/> : <Redirect to='/login' />} />
           <Route path="/create" component={ Create } />
           <Route path="/edit/:id" component={ Edit } />
+          <Route path="/cart" component={()=> loggedIn ? <CartPage/> : <Redirect to='/login' />} />
 
           <ProductNavWrapper>
             <Route path='/products' exact component={ProductsPage} />
