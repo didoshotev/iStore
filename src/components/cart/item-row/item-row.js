@@ -3,7 +3,7 @@ import FontAwIcon from '../../font-awesome-icon/fontAwesomeIcon'
 import { faTimesCircle } from '@fortawesome/free-solid-svg-icons'
 
 
-const ItemRow = ({ product }) => {
+const ItemRow = ({ product, onClick }) => {
     return (
         <li className={styles.container}>
             <section className={styles.gridItem}>
@@ -18,7 +18,7 @@ const ItemRow = ({ product }) => {
                     <h3>${product.price}.00</h3>
                 </div>
                 <div className={styles['col']}>
-                    <FontAwIcon icon={faTimesCircle} size={'lg'} color={'rgb(226, 25, 55)'}/>
+                        <FontAwIcon icon={faTimesCircle} size={'lg'} color={'rgb(226, 25, 55)'} onClick={onClick}/>
                 </div>
             </section>
         </li>

@@ -26,6 +26,14 @@ class App extends Component {
         })
     }
 
+    removeFromCart = (productID) => {
+        const newCart = this.state.cart.filter((item) => item.id !== productID)
+        console.log(newCart);
+        this.setState({
+            cart: newCart
+        })
+    }
+
     logIn = (user) => {
         this.setState({
             loggedIn: true,
@@ -95,7 +103,8 @@ class App extends Component {
                 logIn: this.logIn,
                 logOut: this.logOut,
                 cart,
-                addToCart: this.addToCart
+                addToCart: this.addToCart,
+                removeFromCart: this.removeFromCart
             }}>
                
                 {this.props.children}
