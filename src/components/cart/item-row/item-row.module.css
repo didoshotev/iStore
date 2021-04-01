@@ -1,12 +1,11 @@
 .container {
-    margin-left: auto;
-    margin-right: auto;
-    width: 1200px;
     display: flex;
+    border-bottom: 1px solid rgb(240, 240, 240);
 }
 
-.img-wrapper {
-    /* margin-right: 20px; */
+.gridItem {
+    display: grid;
+    grid-template-columns: 1fr 350px 1.1fr 1fr;
 }
 
 .img-wrapper img {
