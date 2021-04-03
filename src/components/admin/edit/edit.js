@@ -5,6 +5,7 @@ import PageLayout from "../../page-layout/page-layout";
 import getInputs from '../../../utils/inputs'
 import FormGroup from "../../form-group/form-group";
 import apiCall from "../../../utils/apiCall";
+import UploadImg from "../upload-img/upload-img";
 
 
 class Edit extends Component {
@@ -14,11 +15,11 @@ class Edit extends Component {
         this.state = {
             product: { ...this.props.location.state.data },
             inputs: getInputs().createInputs,
+            imgUrl: this.props.location.state.data.imageUrl || ''
         }
     }
 
     createUI() {
-        // console.log(this.state.product);
         return this.state.inputs.map((inputObj, index) => {
             return (
                 <FormGroup
@@ -44,7 +45,8 @@ class Edit extends Component {
     handleSubmit = async (event) => {
         event.preventDefault()
         const res = this.state.inputs.map(a => a.value)
-        let [title, description, deviceType, imageUrl, price, isActive] = [...res]   
+        let [title, description, deviceType, price, isActive] = [...res]
+        const imageUrl = this.state.imgUrl
 
         await apiCall(
             `http://localhost:5000/api/products/${this.state.product.id}`,
@@ -63,7 +65,11 @@ class Edit extends Component {
         )
     }
 
-
+    handleImg = (imgUrl) => {
+        this.setState({
+            imgUrl
+        })
+    }
 
     render() {
 
@@ -71,6 +77,7 @@ class Edit extends Component {
             <PageLayout>
                 <AuthTitle content={`Editing ${this.state.product.title}`} />
                 <FormLayout label={'Product Information'} onSubmit={this.handleSubmit}>
+                    <UploadImg onGetImg={this.handleImg} />
                     {this.createUI()}
                 </FormLayout>
             </PageLayout>

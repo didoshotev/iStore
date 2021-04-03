@@ -5,24 +5,26 @@ import getInputs from '../../../utils/inputs'
 import PageLayout from '../../page-layout/page-layout'
 import AuthTitle from '../../auth-title/auth-title'
 import apiCall from '../../../utils/apiCall'
+import UploadImg from '../upload-img/upload-img'
+import Button from '../../button/button'
 
 class Create extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            values: getInputs().createInputs.map(items => items.value),
+            inputs: getInputs().createInputs,
+            imgUrl: ''
         }
     }
 
     createUI() {
-        const inputs = getInputs().createInputs
-        return this.state.values.map((value, index) =>
+        return this.state.inputs.map((inputObj, index) =>
             <FormGroup
                 key={index}
-                title={inputs[index].title}
-                htmlFor={inputs[index].id}
-                id={inputs[index].id}
-                value={value}
+                title={inputObj.title}
+                htmlFor={inputObj.id}
+                id={inputObj.id}
+                value={inputObj.value}
                 onChange={(e) => this.handleChange(e, index)}
             />
         )
@@ -30,15 +32,21 @@ class Create extends Component {
 
 
     handleChange = (e, index) => {
-        let values = [...this.state.values]
-        values[index] = e.target.value
-        this.setState({ values })
+        const newState = this.state.inputs[index]
+        newState.value = e.target.value
+        this.setState(newState)
+
+        // let inputs = [...this.state.inputs]
+        // inputs[index] = e.target.value
+        // this.setState({ inputs })
     }
 
     handleSubmit = async (event) => {
         event.preventDefault()
-       let [title, description, deviceType, imageUrl, price, isActive] = [...this.state.values]
-       
+        const res = this.state.inputs.map(a => a.value)
+        let [title, description, deviceType, price, isActive] = [...res]
+        const imageUrl = this.state.imgUrl
+
         await apiCall(
             'http://localhost:5000/api/products',
             {
@@ -46,7 +54,7 @@ class Create extends Component {
             },
             'POST',
             (product) => {
-                console.log('Product successfull made!')
+                console.log('Product successfully made!')
                 console.log(product);
                 this.props.history.push('/')
             },
@@ -56,13 +64,21 @@ class Create extends Component {
         )
     }
 
+    handleImg = (imgUrl) => {
+        this.setState({
+            imgUrl
+        })
+    }
+
     render() {
         return (
             <PageLayout>
-                <AuthTitle content={'Create Product'}/>
+                <AuthTitle content={'Create Product'} />
                 <FormLayout label={'Product Information'} onSubmit={this.handleSubmit}>
+                    <UploadImg onGetImg={this.handleImg} />
                     {this.createUI()}
                 </FormLayout>
+
             </PageLayout>
 
         )

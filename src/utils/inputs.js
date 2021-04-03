@@ -19,11 +19,6 @@ const getInputs = () => {
 
         },
         {
-            title: 'ImageUrl',
-            id: 'imageUrl',
-            value: '',
-        },
-        {
             title: 'Price',
             id: 'price',
             value: '',
