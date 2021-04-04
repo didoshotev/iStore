@@ -66,9 +66,13 @@ class ProductInfo extends Component {
 
     handleBuy = (e, state) => {
         e.preventDefault()
-        const { title, deviceType, id, imageUrl, price, description } = this.state
-        this.context.addToCart({ title, deviceType, id, imageUrl, price, description })
-        this.props.history.push('/')
+        if (!this.context.loggedIn) {
+            this.props.history.push('/login')
+        } else {
+            const { title, deviceType, id, imageUrl, price, description } = this.state
+            this.context.addToCart({ title, deviceType, id, imageUrl, price, description })
+            this.props.history.push('/')
+        }
     }
 
     render() {

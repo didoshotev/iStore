@@ -15,7 +15,7 @@ module.exports = {
             const adminCheck = password.substr(password.length - 5);
             let role = (adminCheck === 'admin') ? 'admin' : 'user';
             models.User.create({ username, email, password, role })
-                .then((createdUser) =>  {
+                .then((createdUser) => {
                     const token = utils.jwt.createToken({ id: createdUser._id })
                     res.header('Authorization', token).send(createdUser)
                 })

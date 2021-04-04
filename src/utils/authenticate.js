@@ -8,25 +8,26 @@ const authenticate = async (url, body, onSuccess, onFailure) => {
                 'Content-Type': 'application/json'
             }
         })
-
+        console.log(promise);
         if(promise.status === 500) {
             onFailure(promise.statusText)
             return
+        } else if (promise.status === 200) {
+            const authToken = promise.headers.get('Authorization')
+            document.cookie = `x-auth-token=${authToken}`
+            const response = await promise.json()
+            if (response.username && authToken) {
+                onSuccess({
+                    username: response.username,
+                    id: response._id,
+                    role: response.role
+                })
         }
-        const authToken = promise.headers.get('Authorization')
-        document.cookie = `x-auth-token=${authToken}`
-        const response = await promise.json()
-        if (response.username && authToken) {
-            onSuccess({
-                username: response.username,
-                id: response._id,
-                role: response.role
-            })
         } else {
-            onFailure()
+            onFailure(promise.statusText)
         }
     } catch (err) {
-        onFailure()
+        onFailure('Unauthorized')
     }
 }
 

@@ -5,6 +5,7 @@ import FontAwIcon from '../../font-awesome-icon/fontAwesomeIcon'
 import PriceBox from '../../small-utils/price-box/price-box'
 import { faCartPlus } from '@fortawesome/free-solid-svg-icons'
 import { withRouter } from 'react-router'
+import UserContext from '../../../Context'
 
 
 
@@ -13,12 +14,26 @@ class GridItem extends Component {
         super(props)
     }
 
+    static contextType = UserContext
+
     moreInfoHandler = (e, id, category) => {
         this.props.history.push(`/products/${category}/${id}`)
     }
 
+    handleQuickAddToCart = () => {
+        this.context.addToCart({
+            title: this.props.title,
+            deviceType: this.props.category,
+            id: this.props.id,
+            imageUrl: this.props.img,
+            price: this.props.price,
+            description: this.props.price
+        })
+        this.props.history.push('/cart')
+    }
+
     render() {
-        const { isNew, title, info, img, price, isCart, id, category } = this.props
+        const { title, info, img, price, isCart, id, category } = this.props
         return (
             <section className={styles['item-wrapper']}>
                 <div className={styles['content-wrapper']}>
@@ -35,8 +50,10 @@ class GridItem extends Component {
                 {
                     isCart ?
                         <div className={styles['btn-cart-wrapper']}>
-                            <Button content={'More info'} onClick={(e) => this.moreInfoHandler(e, id, category)}/>
-                            <Button content={<FontAwIcon icon={faCartPlus} size={'lg'} color={'#fff'} />} />
+                            <Button content={'More info'} onClick={(e) => this.moreInfoHandler(e, id, category)} />
+                            <Button content={<FontAwIcon icon={faCartPlus} size={'lg'} color={'#fff'}
+                                onClick={this.handleQuickAddToCart} />}
+                            />
                         </div>
                         :
                         <div className={styles['btn-wrapper']}>

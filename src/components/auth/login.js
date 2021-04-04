@@ -3,6 +3,7 @@ import { withRouter } from 'react-router'
 import UserContext from '../../Context'
 import authenticate from '../../utils/authenticate'
 import Button from '../button/button'
+import FormError from '../form-error/form-error'
 import FormGroup from '../form-group/form-group'
 import styles from './auth.module.css'
 
@@ -11,7 +12,8 @@ class Login extends Component {
         super(props)
         this.state = {
             username: '',
-            password: ''
+            password: '',
+            errorFlag: false
         }
     }
     static contextType = UserContext
@@ -42,6 +44,9 @@ class Login extends Component {
                 this.props.history.push('/')
             },
             (err) => {
+                this.setState({
+                    errorFlag: true
+                })
                 console.log('ERROR in login', err);
             }
         )
@@ -51,6 +56,7 @@ class Login extends Component {
         const {
             username,
             password,
+            errorFlag
         } = this.state
         return (
             <div className={styles.wrapper}>
@@ -73,6 +79,10 @@ class Login extends Component {
                             onChange={(e) => this.onChange(e, 'password')}
                         />
                     </fieldset>
+                    {
+                        errorFlag &&
+                        <FormError errorMessage={'Invalid credentials'} /> 
+                    }
                     <div className={styles['btn-wrapper']}>
                         <Button content={'Login'} />
                     </div>

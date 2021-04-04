@@ -37,7 +37,7 @@ const userSchema = new Schema({
 userSchema.methods = {
 
     matchPassword: function (password) {
-        return bcrypt.compare(password, this.password);
+        return bcrypt.compare(password, this.password); // true or false
     }
 
 };

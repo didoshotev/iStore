@@ -3,6 +3,7 @@ import { withRouter } from 'react-router'
 import UserContext from '../../Context'
 import authenticate from '../../utils/authenticate'
 import Button from '../button/button'
+import FormError from '../form-error/form-error'
 import FormGroup from '../form-group/form-group'
 import styles from './auth.module.css'
 
@@ -27,15 +28,34 @@ class Register extends Component {
     }
 
     handleForm = async (e) => {
+        console.log(this.state);
         e.preventDefault()
         const {
             username,
             password,
-            email
+            email,
+            rePassword,
+            usernameError,
+            emailError,
+            passwordError,
+            rePasswordError
         } = this.state
-
-        
-
+        if (password !== rePassword) {
+            this.setState({
+                errorFlag: true
+            })
+            return
+        }
+        if(usernameError || emailError || passwordError || rePasswordError) {
+            this.setState({
+                errorFlag: true
+            })
+            return
+        } else {
+            this.setState({
+                errorFlag: false
+            })
+        }
         await authenticate(
             'http://localhost:5000/api/user/register',
             {
@@ -49,10 +69,26 @@ class Register extends Component {
                 this.props.history.push('/')
             },
             (err) => {
+                this.setState({
+                    errorFlag: true
+                })
                 console.log('ERROR in register', err);
             }
         )
     }
+
+    // onHandleBlur = (err, type) => {
+    //     if (type === 'username') {
+    //         err ? this.setState({ usernameError: true }) : this.setState({ usernameError: false })
+    //     } else if (type === 'email') {
+    //         err ? this.setState({ emailError: true }) : this.setState({ emailError: false })
+    //     } else if (type === 'password') {
+    //         err ? this.setState({ passwordError: true }) : this.setState({ passwordError: false })
+    //         err ? this.setState({ rePasswordError: true }) : this.setState({ rePasswordError: false })
+    //     }
+    //     console.log(this.state);
+    // }
+
 
     render() {
         const {
@@ -60,6 +96,7 @@ class Register extends Component {
             email,
             password,
             rePassword,
+            errorFlag
         } = this.state
 
         return (
@@ -67,11 +104,28 @@ class Register extends Component {
                 <span className={styles.private}>Private Information</span>
                 <form onSubmit={this.handleForm}>
                     <fieldset>
-                        <FormGroup title={'Username'} id={'username'} value={username}  onChange={(e) => this.onChange(e, 'username')}/>
-                        <FormGroup title={'Email'} id={'email'} value={email} onChange={(e) => this.onChange(e, 'email')}/>
-                        <FormGroup type="password" title={'Password'} id={'password'} value={password} onChange={(e) => this.onChange(e, 'password')}/>
-                        <FormGroup type="password" title={'Repeat Password'} id={'rePassword'} value={rePassword} onChange={(e) => this.onChange(e, 'rePassword')}/>
+                        {/* onBlur */}
+                        <FormGroup
+                            title={'Username'} id={'username'} value={username}
+                            onChange={(e) => this.onChange(e, 'username')}
+                        />
+                        <FormGroup
+                            type={'email'} title={'Email'} id={'email'} value={email}
+                            onChange={(e) => this.onChange(e, 'email')}
+                        />
+                        <FormGroup
+                            type="password" title={'Password'} id={'password'} value={password}
+                            onChange={(e) => this.onChange(e, 'password')}
+                        />
+                        <FormGroup
+                            type="password" title={'Repeat Password'} id={'rePassword'} value={rePassword}
+                            onChange={(e) => this.onChange(e, 'rePassword')}
+                        />
                     </fieldset>
+                    {
+                        errorFlag &&
+                        <FormError errorMessage={'Invalid credentials'} />
+                    }
                     <div className={styles['btn-wrapper']}>
                         <Button type={'submit'} content={'Register'} />
                     </div>
