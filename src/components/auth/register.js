@@ -28,7 +28,6 @@ class Register extends Component {
     }
 
     handleForm = async (e) => {
-        console.log(this.state);
         e.preventDefault()
         const {
             username,

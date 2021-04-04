@@ -8,7 +8,6 @@ const authenticate = async (url, body, onSuccess, onFailure) => {
                 'Content-Type': 'application/json'
             }
         })
-        console.log(promise);
         if(promise.status === 500) {
             onFailure(promise.statusText)
             return

@@ -22,7 +22,7 @@ const emailValidate = (value) => {
 
 const usernameValidate = (value) => {
     // const re = /^(?=[a-zA-Z0-9._]{3,20}$)(?!.*[_.]{2})[^_.].*[^_.]$/
-    const re = /^([a-zA-Z0-9._]{3,15})/
+    const re = /^([a-zA-Z0-9._\s]{3,15})/
     return re.test(String(value))   
 }
 
@@ -32,12 +32,12 @@ const passwordValidate = (value) => {
 }
 
 const titleValidate = (value) => {
-    const re = /^(?=[a-zA-Z0-9._]{3,20}$)/
+    const re = /^([a-zA-Z0-9._\s]{4,20}$)/
     return re.test(value)
 }
 
 const descriptionValidate = (value) => {
-    const re = /^(?=[a-zA-Z0-9._]{10,250}$)/
+    const re = /^([a-zA-Z0-9._\s]{10,250}$)/
     return re.test(value)
 }
 
