@@ -1,0 +1,9 @@
+.error-container {
+    display: flex;
+    justify-content: center;
+}
+
+.error {
+    font-size: 20px;
+    color: rgb(226, 25, 55);
+}
