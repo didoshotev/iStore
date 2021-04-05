@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { withRouter } from 'react-router'
 import UserContext from '../../Context'
 import apiCall from '../../utils/apiCall'
+import localCard from '../../utils/localstorage.card'
 import Button from '../button/button'
 import PriceBox from '../small-utils/price-box/price-box'
 import styles from './productInfo.module.css'
@@ -70,6 +71,14 @@ class ProductInfo extends Component {
             this.props.history.push('/login')
         } else {
             const { title, deviceType, id, imageUrl, price, description } = this.state
+            localCard.addToLocalCard({title, deviceType, id, imageUrl, price, description})
+            // const card = JSON.parse(localStorage.getItem('card'))
+            // if(card) {
+            //     card.push({ title, deviceType, id, imageUrl, price, description })
+            //     localStorage.setItem('card', JSON.stringify(card))
+            // }
+            // let storedData = JSON.parse(localStorage.getItem('card'))
+                        
             this.context.addToCart({ title, deviceType, id, imageUrl, price, description })
             this.props.history.push('/')
         }

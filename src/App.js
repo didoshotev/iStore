@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import UserContext from './Context'
+import localCard from './utils/localstorage.card';
+
 
 function getCookie(name) {
     const cookieValue = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
@@ -24,9 +26,11 @@ class App extends Component {
         this.setState({
             cart: newCart
         })
+        // console.log(this.state);
     }
 
     removeFromCart = (productID) => {
+        localCard.removeFromLocalCard(productID)
         const newCart = this.state.cart.filter((item) => item.id !== productID)
         this.setState({
             cart: newCart
@@ -39,10 +43,12 @@ class App extends Component {
             user,
             role: user.role
         })
+       
     }
 
     logOut = () => {
         document.cookie = 'x-auth-token= ; expires= Thu, 01 Jan 1970 00:00:00 GMT'
+        localCard.clear()
         this.setState({
             loggedIn: false,
             user: null,
@@ -75,6 +81,10 @@ class App extends Component {
                     id: response.user._id,
                     role: response.user.role
                 })
+                const card = localCard.getCard()
+                if(card.length > 0) {
+                    card.map(item => this.addToCart(item))
+                }
             } else {
                 this.logOut()
             }
