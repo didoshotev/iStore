@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { withRouter } from 'react-router'
 import UserContext from '../../Context'
 import authenticate from '../../utils/authenticate'
+import localCard from '../../utils/localstorage.card'
 import Button from '../button/button'
 import FormError from '../form-error/form-error'
 import FormGroup from '../form-group/form-group'
@@ -64,6 +65,7 @@ class Register extends Component {
             },
             (user) => {
                 console.log('Register successfull')
+                localCard.initialize()
                 this.context.logIn(user)
                 this.props.history.push('/')
             },

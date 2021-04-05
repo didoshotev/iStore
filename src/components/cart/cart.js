@@ -62,7 +62,7 @@ class Cart extends Component {
                             </section>
                         </article>
                         :
-                        <div>There are no products in your cart</div>
+                        <div className={styles.empty}>There are no products in your cart</div>
                 }
             </>
         )
