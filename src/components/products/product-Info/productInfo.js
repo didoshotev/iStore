@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router'
-import UserContext from '../../Context'
-import apiCall from '../../utils/apiCall'
-import localCard from '../../utils/localstorage.card'
-import Button from '../button/button'
-import PriceBox from '../small-utils/price-box/price-box'
+import UserContext from '../../../Context'
+import apiCall from '../../../utils/apiCall'
+import localCard from '../../../utils/localstorage.card'
+import Button from '../../global/button/button'
+import PriceBox from '../../global/price-box/price-box'
 import styles from './productInfo.module.css'
 
 class ProductInfo extends Component {

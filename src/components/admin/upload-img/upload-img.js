@@ -1,4 +1,4 @@
-import Button from '../../button/button'
+import Button from '../../global/button/button'
 import styles from './upload-img.module.css'
 
 const UploadImg = (props) => {

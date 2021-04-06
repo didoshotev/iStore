@@ -1,9 +1,9 @@
-import { BrowserRouter, Switch, Route, withRouter, Link, Redirect } from "react-router-dom"
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom"
 import HomePage from "./pages/home-page/home-page"
 import LoginPage from "./pages/login-page/login-page"
 import RegisterPage from "./pages/register-page/register-page"
 import ProductsPage from "./pages/products-page/products-page"
-import ProductNavWrapper from "./components/product-nav-wrapper/product-nav-wrapper"
+import ProductNavWrapper from "./components/global/product-nav-wrapper/product-nav-wrapper"
 import { Component } from "react"
 import UserContext from "./Context"
 import Logout from "./components/auth/logout"
@@ -21,7 +21,7 @@ class Navigation extends Component {
   static contextType = UserContext
 
   render() {
-    const { loggedIn, role } = this.context
+    const { loggedIn } = this.context
     return (
       <BrowserRouter>
         <Switch>

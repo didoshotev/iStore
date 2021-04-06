@@ -1,6 +1,6 @@
 import React from 'react'
-import AuthTitle from '../../components/auth-title/auth-title'
-import PageLayout from '../../components/page-layout/page-layout'
+import AuthTitle from '../../components/global/auth-title/auth-title'
+import PageLayout from '../../components/global/page-layout/page-layout'
 import Register from '../../components/auth/register'
 
 const RegisterPage = () => {

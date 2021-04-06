@@ -1,7 +1,6 @@
 import React from 'react'
 import styles from './first-home-section.module.css'
-import '../../index.css'
-import LinkComponent from '../link/link'
+import LinkComponent from '../../global/link/link'
 
 
 const FirstHomeSection = () => {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import CreateProductContainer from '../../components/admin/create-product-container/create-product-container'
-import AuthTitle from '../../components/auth-title/auth-title'
-import PageLayout from '../../components/page-layout/page-layout'
+import AuthTitle from '../../components/global/auth-title/auth-title'
+import PageLayout from '../../components/global/page-layout/page-layout'
 import Grid from '../../components/products/grid/grid'
 import UserContext from '../../Context'
 

@@ -3,9 +3,9 @@ import { withRouter } from 'react-router'
 import UserContext from '../../Context'
 import authenticate from '../../utils/authenticate'
 import localCard from '../../utils/localstorage.card'
-import Button from '../button/button'
-import FormError from '../form-error/form-error'
-import FormGroup from '../form-group/form-group'
+import Button from '../global/button/button'
+import FormError from '../global/form/form-error/form-error'
+import FormGroup from '../global/form/form-group/form-group'
 import styles from './auth.module.css'
 
 class Register extends Component {
@@ -77,18 +77,6 @@ class Register extends Component {
             }
         )
     }
-
-    // onHandleBlur = (err, type) => {
-    //     if (type === 'username') {
-    //         err ? this.setState({ usernameError: true }) : this.setState({ usernameError: false })
-    //     } else if (type === 'email') {
-    //         err ? this.setState({ emailError: true }) : this.setState({ emailError: false })
-    //     } else if (type === 'password') {
-    //         err ? this.setState({ passwordError: true }) : this.setState({ passwordError: false })
-    //         err ? this.setState({ rePasswordError: true }) : this.setState({ rePasswordError: false })
-    //     }
-    //     console.log(this.state);
-    // }
 
 
     render() {

@@ -1,9 +1,9 @@
 import { Component } from "react";
-import AuthTitle from "../../auth-title/auth-title";
-import FormLayout from "../../form-layout/form-layout";
-import PageLayout from "../../page-layout/page-layout";
+import AuthTitle from '../../global/auth-title/auth-title'
+import FormLayout from '../../global/form/form-layout/form-layout'
+import PageLayout from '../../global/page-layout/page-layout'
 import getInputs from '../../../utils/inputs'
-import FormGroup from "../../form-group/form-group";
+import FormGroup from '../../global/form/form-group/form-group'
 import apiCall from "../../../utils/apiCall";
 import UploadImg from "../upload-img/upload-img";
 

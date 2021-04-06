@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
-import FormGroup from '../../form-group/form-group'
-import FormLayout from '../../form-layout/form-layout'
+import FormGroup from '../../global/form/form-group/form-group'
+import FormLayout from '../../global/form/form-layout/form-layout'
 import getInputs from '../../../utils/inputs'
-import PageLayout from '../../page-layout/page-layout'
-import AuthTitle from '../../auth-title/auth-title'
+import PageLayout from '../../global/page-layout/page-layout'
+import AuthTitle from '../../global/auth-title/auth-title'
 import apiCall from '../../../utils/apiCall'
 import UploadImg from '../upload-img/upload-img'
-import Button from '../../button/button'
 
 class Create extends Component {
     constructor(props) {
