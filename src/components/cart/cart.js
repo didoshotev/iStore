@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import UserContext from '../../Context'
-import AuthTitle from '../auth-title/auth-title'
+import AuthTitle from '../global/auth-title/auth-title'
 import CartSummary from './cart-summary/cart-summary'
 import styles from './cart.module.css'
 import ItemRow from './item-row/item-row'

@@ -3,9 +3,9 @@ import { withRouter } from 'react-router'
 import UserContext from '../../Context'
 import authenticate from '../../utils/authenticate'
 import localCard from '../../utils/localstorage.card'
-import Button from '../button/button'
-import FormError from '../form-error/form-error'
-import FormGroup from '../form-group/form-group'
+import Button from '../global/button/button'
+import FormError from '../global/form/form-error/form-error'
+import FormGroup from '../global/form/form-group/form-group'
 import styles from './auth.module.css'
 
 class Login extends Component {

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styles from './form-group.module.css'
-import validate from '../../utils/validate-input'
+import validate from '../../../../utils/validate-input'
 
 const FormGroup = ({ title, id, value, onChange, type }) => {
 

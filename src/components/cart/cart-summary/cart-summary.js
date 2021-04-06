@@ -1,4 +1,4 @@
-import Button from '../../button/button'
+import Button from '../../global/button/button'
 import styles from './cart-summary.module.css'
 
 const CartSummary = (props) => {

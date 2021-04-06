@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './header-li.module.css'
-import LinkComponent from '../link/link'
+import LinkComponent from '../../link/link'
 
 const HeaderLi = ( { href, title} ) => {
     return (

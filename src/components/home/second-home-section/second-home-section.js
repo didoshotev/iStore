@@ -1,7 +1,7 @@
 import React from 'react'
-import GridItem from '../grid-item/grid-item'
+import GridItem from './grid-item/grid-item'
 import styles from './second-home-section.module.css'
-import getSpecialOffers from '../../utils/special-offers'
+import getSpecialOffers from '../../../utils/special-offers'
 
 const SecondHomeSection = () => {
     const offers = getSpecialOffers()

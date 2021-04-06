@@ -1,8 +1,6 @@
 import React from 'react'
 import GridItemDesc from '../grid-item-desc/grid-item-desc'
-import SpecialOffer from '../special-offer/special-offer'
 import styles from './grid-item.module.css'
-import * as images from '../../images/mcb.png'
 
 const GridItem = ({ type, title, info, imgUrl, category }) => {
     if (type === 'small') {

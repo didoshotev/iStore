@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router';
-import PageLayout from '../../components/page-layout/page-layout'
-import ProductInfo from '../../components/product-Info/productInfo';
+import PageLayout from '../../components/global/page-layout/page-layout'
+import ProductInfo from '../../components/products/product-Info/productInfo';
 
 
 class ProductInfoPage extends Component {

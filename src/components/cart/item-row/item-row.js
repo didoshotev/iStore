@@ -1,5 +1,5 @@
 import styles from './item-row.module.css'
-import FontAwIcon from '../../font-awesome-icon/fontAwesomeIcon'
+import FontAwIcon from '../../global/font-awesome-icon/fontAwesomeIcon'
 import { faTimesCircle } from '@fortawesome/free-solid-svg-icons'
 
 

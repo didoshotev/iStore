@@ -1,6 +1,6 @@
 import React from 'react'
-import LinkComponent from '../link/link'
-import SpecialOffer from '../special-offer/special-offer'
+import LinkComponent from '../../../global/link/link'
+import SpecialOffer from '../../../global/special-offer/special-offer'
 import styles from './grid-item-desc.module.css'
 
 const GridItemDesc = ({ productName, info, category }) => {

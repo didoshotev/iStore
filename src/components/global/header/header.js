@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 import styles from './header.module.css'
-import LinkComponent from '../link/link'
-import getNavigation from '../../utils/navigation'
-import HeaderLi from '../header-li/header-li'
+import getNavigation from '../../../utils/navigation'
+import HeaderLi from './header-li/header-li'
 import { Link } from 'react-router-dom'
-import UserContext from '../../Context'
+import UserContext from '../../../Context'
 
 class Header extends Component {
     constructor(props) {

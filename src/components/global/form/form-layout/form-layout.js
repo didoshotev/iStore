@@ -1,6 +1,5 @@
-import React, { Component } from 'react'
-import Button from '../button/button'
-import FormGroup from '../form-group/form-group'
+import React from 'react'
+import Button from '../../button/button'
 import styles from './form-layout.module.css'
 
 const FormLayout = (props) => (
