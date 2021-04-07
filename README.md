@@ -1,6 +1,7 @@
 # iStore
 
-A simple full stack application 
+A simple full stack e-commerce application.  
+To get admin role your password must finish with 'admin' ex.(123admin)
 
 ## Technology stack
 * React
@@ -22,7 +23,51 @@ The application should be running afterwards
 # Application description
 Application is made by the typical 'react-way' where everything is splitted into big components and those big components are splitted into smaller components etc. 
 Using a single global Context to keep the most needed information there.
-Using some external utils functions which keep information about different small parts of the app and makes adding new features easier.
+Using external utils functions which keep information about different small parts of the app and makes adding new features easier.
+
+
+## Components description
+Components architecture is simply splitted into pages **(admin, auth, cart, home, products)** where components there are only beeing used at the same level.
+**Global** directory holds all of the layout, styling, logic components which are used across all other components. The idea is each page components doesn't know about other components ex.(admin doesn't know about cart) and all components know about Global. 
+This architecture is suitable for small projects like this one and definetely it could be improved and build in much better and scalable way.
+
+```bash
+├───admin
+│   ├───create
+│   ├───create-product-container
+│   ├───edit
+│   └───upload-img
+├───auth
+├───cart
+│   ├───cart-summary
+│   └───item-row
+├───global
+│   ├───auth-title
+│   ├───button
+│   ├───font-awesome-icon
+│   ├───footer
+│   ├───form
+│   │   ├───form-error
+│   │   ├───form-group
+│   │   └───form-layout
+│   ├───header
+│   │   └───header-li
+│   ├───link
+│   ├───page-layout
+│   ├───price-box
+│   ├───product-nav-wrapper
+│   └───special-offer
+├───home
+│   ├───first-home-section
+│   └───second-home-section
+│       ├───grid-item
+│       └───grid-item-desc
+└───products
+    ├───grid
+    ├───grid-item
+    └───product-Info
+```
+
 
 
 
