@@ -13,25 +13,44 @@ const getInputs = () => {
 
         },
         {
-            title: 'Category',
-            id: 'deviceType',
-            value: '',
-
-        },
-        {
             title: 'Price',
             id: 'price',
             value: '',
         },
+    ]
+
+    const categories = [
         {
-            title: 'Is the product active?',
-            id: 'isActive',
-            value: '',
+            title: 'iPhone',
+            id: 'iphone'
+        },
+        {
+            title: 'Mac',
+            id: 'mac'
+        },
+        {
+            title: 'iPad',
+            id: 'ipad'
         },
     ]
 
+    const isActive = [
+        {
+            title: 'Yes',
+            id: 'true',
+            value: true
+        },
+        {
+            title: 'No',
+            id: 'false',
+            value: false
+        }
+    ]
+
     return {
-        createInputs
+        createInputs,
+        categories,
+        isActive
     }
 }
 

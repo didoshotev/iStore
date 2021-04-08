@@ -6,13 +6,19 @@ import PageLayout from '../../global/page-layout/page-layout'
 import AuthTitle from '../../global/auth-title/auth-title'
 import apiCall from '../../../utils/apiCall'
 import UploadImg from '../upload-img/upload-img'
+import FormError from '../../global/form/form-error/form-error'
+import Select from '../../global/form/select/select'
+
 
 class Create extends Component {
     constructor(props) {
         super(props)
         this.state = {
             inputs: getInputs().createInputs,
-            imgUrl: ''
+            imgUrl: '',
+            deviceType: 'iphone',
+            isActive: true,
+            errorFlag: false
         }
     }
 
@@ -34,17 +40,15 @@ class Create extends Component {
         const newState = this.state.inputs[index]
         newState.value = e.target.value
         this.setState(newState)
-
-        // let inputs = [...this.state.inputs]
-        // inputs[index] = e.target.value
-        // this.setState({ inputs })
     }
 
     handleSubmit = async (event) => {
         event.preventDefault()
         const res = this.state.inputs.map(a => a.value)
-        let [title, description, deviceType, price, isActive] = [...res]
+        let [title, description, price] = [...res]
         const imageUrl = this.state.imgUrl
+        const deviceType = this.state.deviceType 
+        const isActive = this.state.isActive
 
         await apiCall(
             'http://localhost:5000/api/products',
@@ -58,6 +62,9 @@ class Create extends Component {
                 this.props.history.push('/')
             },
             (err) => {
+                this.setState({
+                    errorFlag: true
+                })
                 console.log('ERROR in creating product', err);
             }
         )
@@ -69,6 +76,18 @@ class Create extends Component {
         })
     }
 
+    handleIsActive = (e) => {
+        this.setState({
+            isActive: !this.state.isActive
+        })
+    }
+
+    handleCategory = (e) => {
+        this.setState({
+            deviceType: e.target.value
+        })
+    }
+
     render() {
         return (
             <PageLayout>
@@ -76,6 +95,26 @@ class Create extends Component {
                 <FormLayout label={'Product Information'} onSubmit={this.handleSubmit}>
                     <UploadImg onGetImg={this.handleImg} />
                     {this.createUI()}
+
+                    <Select id={'deviceType'} title={'Product category'} onChange={(e) => this.handleCategory(e)} >
+                        {
+                            getInputs().categories.map((item, index) => {
+                                return <option key={index} value={item.id}>{item.title}</option>
+                            })
+                        }
+                    </Select>
+
+                    <Select id={'isActive'} title={'Is the product active'} onChange={(e) => this.handleIsActive(e)} >
+                        {
+                            getInputs().isActive.map((item, index) => {
+                                return <option key={index} value={item.value}>{item.title}</option>
+                            })
+                        }
+                    </Select>
+                    {
+                        this.state.errorFlag &&
+                        <FormError errorMessage={'Invalid or missing credentials'} />
+                    }
                 </FormLayout>
 
             </PageLayout>
