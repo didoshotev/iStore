@@ -6,6 +6,8 @@ import getInputs from '../../../utils/inputs'
 import FormGroup from '../../global/form/form-group/form-group'
 import apiCall from "../../../utils/apiCall";
 import UploadImg from "../upload-img/upload-img";
+import FormError from '../../global/form/form-error/form-error'
+import Select from '../../global/form/select/select'
 
 
 class Edit extends Component {
@@ -15,7 +17,10 @@ class Edit extends Component {
         this.state = {
             product: { ...this.props.location.state.data },
             inputs: getInputs().createInputs,
-            imgUrl: this.props.location.state.data.imageUrl || ''
+            imgUrl: this.props.location.state.data.imageUrl || '',
+            errorFlag: false,
+            deviceType: 'iphone',
+            isActive: true,
         }
     }
 
@@ -45,8 +50,10 @@ class Edit extends Component {
     handleSubmit = async (event) => {
         event.preventDefault()
         const res = this.state.inputs.map(a => a.value)
-        let [title, description, deviceType, price, isActive] = [...res]
+        let [title, description, price] = [...res]
         const imageUrl = this.state.imgUrl
+        const deviceType = this.state.deviceType 
+        const isActive = this.state.isActive
 
         await apiCall(
             `http://localhost:5000/api/products/${this.state.product.id}`,
@@ -60,6 +67,9 @@ class Edit extends Component {
                 this.props.history.push('/')
             },
             (err) => {
+                this.setState({
+                    errorFlag: true
+                })
                 console.log('ERROR in editing product', err);
             }
         )
@@ -71,6 +81,18 @@ class Edit extends Component {
         })
     }
 
+    handleIsActive = (e) => {
+        this.setState({
+            isActive: !this.state.isActive
+        })
+    }
+
+    handleCategory = (e) => {
+        this.setState({
+            deviceType: e.target.value
+        })
+    }
+
     render() {
 
         return (
@@ -79,6 +101,27 @@ class Edit extends Component {
                 <FormLayout label={'Product Information'} onSubmit={this.handleSubmit}>
                     <UploadImg onGetImg={this.handleImg} />
                     {this.createUI()}
+                    
+                    <Select id={'deviceType'} title={'Product category'} onChange={(e) => this.handleCategory(e)} >
+                        {
+                            getInputs().categories.map((item, index) => {
+                                return <option key={index} value={item.id}>{item.title}</option>
+                            })
+                        }
+                    </Select>
+
+                    <Select id={'isActive'} title={'Is the product active'} onChange={(e) => this.handleIsActive(e)} >
+                        {
+                            getInputs().isActive.map((item, index) => {
+                                return <option key={index} value={item.value}>{item.title}</option>
+                            })
+                        }
+                    </Select>
+
+                    {
+                        this.state.errorFlag &&
+                        <FormError errorMessage={'Invalid or missing credentials'} />
+                    }
                 </FormLayout>
             </PageLayout>
         )
