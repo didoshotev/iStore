@@ -11,6 +11,7 @@ import productInfoPage from "./pages/product-info-page/product-info-page"
 import Create from "./components/admin/create/create"
 import Edit from "./components/admin/edit/edit"
 import CartPage from "./pages/cart-page/cart-page"
+import GlobalErrorBoundary from "./GlobalErrorBoundary"
 
 class Navigation extends Component {
 
@@ -23,25 +24,27 @@ class Navigation extends Component {
   render() {
     const { loggedIn } = this.context
     return (
-      <BrowserRouter>
-        <Switch>
-          <Route path='/' exact component={HomePage} />
-          <Route path="/login" component={()=>!loggedIn ? <LoginPage/> : <Redirect to='/' />} />
-          <Route path="/register" component={()=>!loggedIn ? <RegisterPage/> : <Redirect to='/' />} />
-          <Route path="/logout" component={()=> loggedIn ? <Logout/> : <Redirect to='/login' />} />
-          <Route path="/create" component={ Create } />
-          <Route path="/edit/:id" component={ Edit } />
-          <Route path="/cart" component={()=> loggedIn ? <CartPage/> : <Redirect to='/login' />} />
+      <GlobalErrorBoundary>
+        <BrowserRouter>
+          <Switch>
+            <Route path='/' exact component={HomePage} />
+            <Route path="/login" component={() => !loggedIn ? <LoginPage /> : <Redirect to='/' />} />
+            <Route path="/register" component={() => !loggedIn ? <RegisterPage /> : <Redirect to='/' />} />
+            <Route path="/logout" component={() => loggedIn ? <Logout /> : <Redirect to='/login' />} />
+            <Route path="/create" component={Create} />
+            <Route path="/edit/:id" component={Edit} />
+            <Route path="/cart" component={() => loggedIn ? <CartPage /> : <Redirect to='/login' />} />
 
-          <ProductNavWrapper>
-            <Route path='/products' exact component={ProductsPage} />
-            <Route path='/mac' component={ProductsPage} />
-            <Route path='/iphone' component={ProductsPage} />
-            <Route path='/ipad' component={ProductsPage} />
-            <Route path='/products/:category/:id' component={productInfoPage} />
-          </ProductNavWrapper>
-        </Switch>
-      </BrowserRouter>
+            <ProductNavWrapper>
+              <Route path='/products' exact component={ProductsPage} />
+              <Route path='/mac' component={ProductsPage} />
+              <Route path='/iphone' component={ProductsPage} />
+              <Route path='/ipad' component={ProductsPage} />
+              <Route path='/products/:category/:id' component={productInfoPage} />
+            </ProductNavWrapper>
+          </Switch>
+        </BrowserRouter>
+      </GlobalErrorBoundary>
     )
   }
 }
