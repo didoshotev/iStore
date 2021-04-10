@@ -31,7 +31,7 @@ const FormGroup = ({ title, id, value, onChange, type }) => {
                 onBlur={(e) => onHandleChange(e, value, type || 'text', id)}
             />
             {
-               error && <div className={styles.error}>{errorMsg}</div>
+               error && <div id={'quick-error'} className={styles.error}>{errorMsg}</div>
             }
         </div>
         

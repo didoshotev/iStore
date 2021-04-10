@@ -1,4 +1,4 @@
-const getNavigation = (loggedIn, user) => {
+const getNavigation = (loggedIn) => {
 
     const guestLinks = [
         {

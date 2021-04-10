@@ -3,7 +3,7 @@ import styles from './form-error.module.css'
 const FormError = ({ errorMessage }) => {
 
     return (
-        <div className={styles['error-container']}>
+        <div id={'form-error'} className={styles['error-container']}>
             <span className={styles.error}>{errorMessage}</span>
         </div>
     )
