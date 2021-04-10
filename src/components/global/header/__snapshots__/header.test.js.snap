@@ -1,0 +1,175 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header Component should render auth routes 1`] = `
+<header
+  className="header-background"
+>
+  <ul
+    className="header"
+  >
+    <a
+      href="/"
+      onClick={[Function]}
+    >
+      <img
+        alt=""
+        className="logo"
+        src="https://istyle.bg/media/logo/stores/11/iSTYLE-logo-white-red.svg"
+      />
+    </a>
+    <li
+      className="header-li"
+    >
+      <a
+        className="a a--white"
+        href="/products"
+        onClick={[Function]}
+      >
+        All Products
+      </a>
+    </li>
+    <li
+      className="header-li"
+    >
+      <a
+        className="a a--white"
+        href="/mac"
+        onClick={[Function]}
+      >
+        Mac
+      </a>
+    </li>
+    <li
+      className="header-li"
+    >
+      <a
+        className="a a--white"
+        href="/ipad"
+        onClick={[Function]}
+      >
+        iPad
+      </a>
+    </li>
+    <li
+      className="header-li"
+    >
+      <a
+        className="a a--white"
+        href="/iphone"
+        onClick={[Function]}
+      >
+        iPhone
+      </a>
+    </li>
+    <li
+      className="header-li"
+    >
+      <a
+        className="a a--white"
+        href="/login"
+        onClick={[Function]}
+      >
+        Login
+      </a>
+    </li>
+    <li
+      className="header-li"
+    >
+      <a
+        className="a a--white"
+        href="/register"
+        onClick={[Function]}
+      >
+        Register
+      </a>
+    </li>
+  </ul>
+</header>
+`;
+
+exports[`Header Component should render non-auth routes 1`] = `
+<header
+  className="header-background"
+>
+  <ul
+    className="header"
+  >
+    <a
+      href="/"
+      onClick={[Function]}
+    >
+      <img
+        alt=""
+        className="logo"
+        src="https://istyle.bg/media/logo/stores/11/iSTYLE-logo-white-red.svg"
+      />
+    </a>
+    <li
+      className="header-li"
+    >
+      <a
+        className="a a--white"
+        href="/products"
+        onClick={[Function]}
+      >
+        All Products
+      </a>
+    </li>
+    <li
+      className="header-li"
+    >
+      <a
+        className="a a--white"
+        href="/mac"
+        onClick={[Function]}
+      >
+        Mac
+      </a>
+    </li>
+    <li
+      className="header-li"
+    >
+      <a
+        className="a a--white"
+        href="/ipad"
+        onClick={[Function]}
+      >
+        iPad
+      </a>
+    </li>
+    <li
+      className="header-li"
+    >
+      <a
+        className="a a--white"
+        href="/iphone"
+        onClick={[Function]}
+      >
+        iPhone
+      </a>
+    </li>
+    <li
+      className="header-li"
+    >
+      <a
+        className="a a--white"
+        href="/login"
+        onClick={[Function]}
+      >
+        Login
+      </a>
+    </li>
+    <li
+      className="header-li"
+    >
+      <a
+        className="a a--white"
+        href="/register"
+        onClick={[Function]}
+      >
+        Register
+      </a>
+    </li>
+  </ul>
+</header>
+`;
