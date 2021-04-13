@@ -8,6 +8,7 @@ import apiCall from '../../../utils/apiCall'
 import UploadImg from '../upload-img/upload-img'
 import FormError from '../../global/form/form-error/form-error'
 import Select from '../../global/form/select/select'
+import { withRouter } from 'react-router'
 
 
 class Create extends Component {
@@ -57,8 +58,6 @@ class Create extends Component {
             },
             'POST',
             (product) => {
-                console.log('Product successfully made!')
-                console.log(product);
                 this.props.history.push('/')
             },
             (err) => {
@@ -123,4 +122,4 @@ class Create extends Component {
     }
 }
 
-export default Create
+export default withRouter(Create)

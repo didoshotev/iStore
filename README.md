@@ -1,7 +1,6 @@
 # iStore
 
 A simple full stack e-commerce application.  
-To get admin role your password must finish with 'admin' ex.(123admin)
 
 ## Technology stack
 * React

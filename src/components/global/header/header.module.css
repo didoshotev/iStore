@@ -5,6 +5,7 @@
     align-content: center;
     height: 70px;
     list-style: none;
+    max-width: 90%;
 }
 
 .header-background {

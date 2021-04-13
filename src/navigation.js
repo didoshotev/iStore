@@ -24,7 +24,6 @@ class Navigation extends Component {
 
   render() {
     const { loggedIn, role } = this.context
-    console.log(this.context);
     return (
       <GlobalErrorBoundary>
         <BrowserRouter>

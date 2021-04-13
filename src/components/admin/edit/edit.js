@@ -62,8 +62,6 @@ class Edit extends Component {
             },
             'PUT',
             (product) => {
-                console.log('Product successfully edited!')
-                console.log(product);
                 this.props.history.push('/')
             },
             (err) => {
