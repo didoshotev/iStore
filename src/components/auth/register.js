@@ -64,7 +64,6 @@ class Register extends Component {
                 password
             },
             (user) => {
-                console.log('Register successfull')
                 localCard.initialize()
                 this.context.logIn(user)
                 this.props.history.push('/')

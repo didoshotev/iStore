@@ -56,7 +56,6 @@ class ProductInfo extends Component {
             {},
             'DELETE',
             (product) => {
-                console.log('Product successfully deleted!')
                 this.props.history.push('/')
             },
             (err) => {
@@ -72,13 +71,6 @@ class ProductInfo extends Component {
         } else {
             const { title, deviceType, id, imageUrl, price, description } = this.state
             localCard.addToLocalCard({title, deviceType, id, imageUrl, price, description})
-            // const card = JSON.parse(localStorage.getItem('card'))
-            // if(card) {
-            //     card.push({ title, deviceType, id, imageUrl, price, description })
-            //     localStorage.setItem('card', JSON.stringify(card))
-            // }
-            // let storedData = JSON.parse(localStorage.getItem('card'))
-                        
             this.context.addToCart({ title, deviceType, id, imageUrl, price, description })
             this.props.history.push('/')
         }
@@ -108,7 +100,6 @@ class ProductInfo extends Component {
                         <p>{description}</p>
                     </div>
                     <div className={styles['btn-price-wrapper']}>
-                        {/* <span className={styles.price}>${price}.00</span> */}
                         <div>
                             <PriceBox price={price} isAvailable={isActive} />
                         </div>

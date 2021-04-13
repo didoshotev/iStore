@@ -39,8 +39,6 @@ class Login extends Component {
                 password
             },
             (user) => {
-                console.log('Login successfull')
-                console.log(user);
                 localCard.initialize()
                 this.context.logIn(user)
                 this.props.history.push('/')

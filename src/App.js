@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import UserContext from './Context'
 import localCard from './utils/localstorage.card';
-
+import * as APIService from './services/API-Service'
 
 function getCookie(name) {
     const cookieValue = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
@@ -26,7 +26,6 @@ class App extends Component {
         this.setState({
             cart: newCart
         })
-        // console.log(this.state);
     }
 
     removeFromCart = (productID) => {
@@ -43,7 +42,7 @@ class App extends Component {
             user,
             role: user.role
         })
-       
+
     }
 
     logOut = () => {
@@ -57,38 +56,30 @@ class App extends Component {
         })
     }
 
+    verifyUser = async (token) => {
+        const response = await APIService.isVerified(token)
+        if (response.status) {
+            this.logIn({
+                username: response.user.username,
+                id: response.user._id,
+                role: response.user.role
+            })
+            const card = localCard.getCard()
+            if (card.length > 0) {
+                card.map(item => this.addToCart(item))
+            }
+        } else {
+            this.logOut()
+        }
+    }
+
     componentDidMount() {
         const token = getCookie('x-auth-token')
-        if(!token) {
+        if (!token) {
             this.logOut()
             return
         }
-
-        fetch('http://localhost:5000/api/user/verify', {
-            method: 'POST',
-            body: JSON.stringify({
-                token
-            }),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }).then(promise => {
-            return promise.json()
-        }).then(response => {
-            if(response.status) {
-                this.logIn({
-                    username: response.user.username,
-                    id: response.user._id,
-                    role: response.user.role
-                })
-                const card = localCard.getCard()
-                if(card.length > 0) {
-                    card.map(item => this.addToCart(item))
-                }
-            } else {
-                this.logOut()
-            }
-        })
+        this.verifyUser(token)
     }
 
     render() {
@@ -98,8 +89,8 @@ class App extends Component {
             role,
             cart
         } = this.state
-        
-        if(loggedIn === null) {
+
+        if (loggedIn === null) {
             return (
                 <div>Loading...</div>
             )
@@ -115,11 +106,11 @@ class App extends Component {
                 addToCart: this.addToCart,
                 removeFromCart: this.removeFromCart
             }}>
-               
+
                 {this.props.children}
-               
+
             </UserContext.Provider>
-            
+
         )
     }
 }

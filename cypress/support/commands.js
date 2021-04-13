@@ -38,7 +38,6 @@ Cypress.Commands.add('login', () => {
         }
     })
         .then((resp) => {
-            console.log(resp);
             const authToken = resp.headers['authorization']
             document.cookie = `x-auth-token=${authToken}`
             return resp
