@@ -1,6 +1,9 @@
 # iStore
-
+Screenshot 1
 ![iStore Home Page](./public/iStore-home-1.png "iStore Home Page")
+
+Screenshot 2
+
 ![iStore Home Page](./public/iStore-home-2.png "iStore Home Page")
 
 
