@@ -1,13 +1,10 @@
 # iStore
-Screenshot 1
-![iStore Home Page](./public/iStore-home-1.png "iStore Home Page")
-
-Screenshot 2
-
-![iStore Home Page](./public/iStore-home-2.png "iStore Home Page")
-
 
 A simple full stack e-commerce application.  
+
+![iStore Home Page](./public/iStore-home-1.png "iStore Home Page")
+![iStore Home Page](./public/iStore-home-2.png "iStore Home Page")
+
 
 ## Technology stack
 * React
