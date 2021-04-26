@@ -1,6 +1,6 @@
 # iStore
 
-![iStore Home Page](C:\Users\Admin\Pictures\Screenshots\iStore-home-1.png "iStore Home Page")
+![iStore Home Page](./public/iStore-home-1.png "iStore Home Page")
 
 A simple full stack e-commerce application.  
 
