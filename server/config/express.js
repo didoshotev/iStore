@@ -2,6 +2,7 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const secret = 'secret';
+const path = require('path');
 
 module.exports = (app) => {
     app.use(cors({
