@@ -33,7 +33,7 @@ class Login extends Component {
         } = this.state
 
         await authenticate(
-            'http://localhost:5000/api/user/login',
+            'https://istore-nodejs.herokuapp.com/api/user/login',
             {
                 username,
                 password

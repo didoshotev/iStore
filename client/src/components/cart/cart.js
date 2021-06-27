@@ -17,7 +17,7 @@ class Cart extends Component {
 
     static contextType = UserContext
     renderRow() {
-        const items = this.state.cart
+        const items = this.context.cart
         return (
             items.map((item, index) => {
                 return <ItemRow key={index} product={item} onClick={(e) => this.onRemoveProduct(e, item)} />
@@ -46,7 +46,7 @@ class Cart extends Component {
 
     render() {
         const cart = this.context.cart
-        this.state.cart = cart
+        // this.state.cart = cart
         return (
             <>
                 <AuthTitle content={'Cart'} />

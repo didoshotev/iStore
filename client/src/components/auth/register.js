@@ -57,13 +57,14 @@ class Register extends Component {
             })
         }
         await authenticate(
-            'http://localhost:5000/api/user/register',
+            'https://istore-nodejs.herokuapp.com/api/user/register',
             {
                 username,
                 email,
                 password
             },
             (user) => {
+                console.log(user);
                 localCard.initialize()
                 this.context.logIn(user)
                 this.props.history.push('/')
