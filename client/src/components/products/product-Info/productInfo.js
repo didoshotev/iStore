@@ -28,7 +28,7 @@ class ProductInfo extends Component {
     }
 
     getItem = async (id) => {
-        const promise = await fetch(`http://localhost:5000/api/products/${this.props.category}/${id}`)
+        const promise = await fetch(`https://istore-nodejs.herokuapp.com/api/products/${this.props.category}/${id}`)
         const product = await promise.json()
         this.setState({
             title: product.title,
