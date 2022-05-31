@@ -7,6 +7,7 @@ import Button from '../global/button/button'
 import FormError from '../global/form/form-error/form-error'
 import FormGroup from '../global/form/form-group/form-group'
 import styles from './auth.module.css'
+import { API_URL } from "../../config"
 
 class Register extends Component {
 
@@ -57,7 +58,7 @@ class Register extends Component {
             })
         }
         await authenticate(
-            'https://istore-nodejs.herokuapp.com/api/user/register',
+            `${API_URL}/api/user/register`,
             {
                 username,
                 email,

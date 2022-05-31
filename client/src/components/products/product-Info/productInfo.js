@@ -6,6 +6,7 @@ import localCard from '../../../utils/localstorage.card'
 import Button from '../../global/button/button'
 import PriceBox from '../../global/price-box/price-box'
 import styles from './productInfo.module.css'
+import { API_URL } from "../../../config"
 
 class ProductInfo extends Component {
     constructor(props) {
@@ -28,7 +29,7 @@ class ProductInfo extends Component {
     }
 
     getItem = async (id) => {
-        const promise = await fetch(`https://istore-nodejs.herokuapp.com/api/products/${this.props.category}/${id}`)
+        const promise = await fetch(`${API_URL}/api/products/${this.props.category}/${id}`)
         const product = await promise.json()
         this.setState({
             title: product.title,

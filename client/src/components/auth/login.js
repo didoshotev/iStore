@@ -7,6 +7,7 @@ import Button from '../global/button/button'
 import FormError from '../global/form/form-error/form-error'
 import FormGroup from '../global/form/form-group/form-group'
 import styles from './auth.module.css'
+import { API_URL } from "../../config"
 
 class Login extends Component {
     constructor(props) {
@@ -33,7 +34,7 @@ class Login extends Component {
         } = this.state
 
         await authenticate(
-            'https://istore-nodejs.herokuapp.com/api/user/login',
+            `${API_URL}/api/user/login`,
             {
                 username,
                 password
